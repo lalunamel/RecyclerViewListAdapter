@@ -1,10 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 27
-
-
 
     defaultConfig {
         minSdkVersion 23
@@ -38,3 +38,5 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply from: 'publish.gradle'
