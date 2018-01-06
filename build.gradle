@@ -18,20 +18,3 @@ allprojects {
         jcenter()
     }
 }
-
-
-//bintray {
-//    user = "lalunamel"
-//    key = System.getenv('BINTRAY_KEY')
-//    pkg {
-//        repo = "codysehl.net" // groupId
-//        name = "recyclerview-list-adapter" // artifactId
-//        licenses = ["MIT"]
-//        vcsUrl = "git://github.com/lalunamel/RecyclerViewListAdapter.git"
-//        version {
-//            name = "1.0.0"
-//        }
-//        configurations = ["archives"]
-//    }
-//
-//}
