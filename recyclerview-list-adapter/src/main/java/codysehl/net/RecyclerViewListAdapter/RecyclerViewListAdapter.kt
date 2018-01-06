@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 
 
-abstract class RecyclerViewListAdapterOrig<V: View, I>(var items: List<I> = listOf()): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+abstract class RecyclerViewListAdapter<V: View, I>(var items: List<I> = listOf()): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
-        fun <V: View, I>create(viewConstructor: () -> V, update: (V, I) -> Unit): RecyclerViewListAdapterOrig<V, I> {
-            return object: RecyclerViewListAdapterOrig<V, I>() {
+        fun <V: View, I>create(viewConstructor: () -> V, update: (V, I) -> Unit): RecyclerViewListAdapter<V, I> {
+            return object: RecyclerViewListAdapter<V, I>() {
 
                 override fun getItemCount(): Int = items.size
 
