@@ -7,20 +7,26 @@ import android.view.ViewGroup
 
 abstract class RecyclerViewListAdapter<V: View, I>(var items: List<I> = listOf()): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
-        fun <V: View, I>create(viewConstructor: () -> V, update: (V, I) -> Unit): RecyclerViewListAdapter<V, I> {
+        /**
+         * @param createView A function that creates a View or a View subclass
+         *
+         * @param updateView A function that takes a View created by createView and an Item
+         * and updates the View.
+         */
+        fun <V: View, I>create(createView: () -> V, updateView: (V, I) -> Unit): RecyclerViewListAdapter<V, I> {
             return object: RecyclerViewListAdapter<V, I>() {
 
                 override fun getItemCount(): Int = items.size
 
                 override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-                    val view: V = viewConstructor()
+                    val view: V = createView()
                     return object: RecyclerView.ViewHolder(view) {}
                 }
 
                 override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
                     val item = items[position]
                     @Suppress("UNCHECKED_CAST")
-                    update(holder.itemView as V, item)
+                    updateView(holder.itemView as V, item)
                 }
 
             }
